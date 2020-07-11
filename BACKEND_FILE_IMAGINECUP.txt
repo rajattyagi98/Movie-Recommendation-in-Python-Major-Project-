@@ -1,0 +1,28 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Aug 10 11:46:20 2019
+
+@author: RAJAT TYAGI
+"""
+
+import speech_recognition as sr
+import webbrowser as wb
+#import speak
+#import speak
+#api_address= "api.openweathermap.org/data/2.5/weather?q="
+chrome = "C://Program Files (x86)//Google//Chrome//Application//chrome.exe %s"
+
+print("What's your query????")
+r=sr.Recognizer()
+with sr.Microphone() as source:
+    audio=r.listen(source)
+    print('Done !!!')
+
+try:
+    text=r.recognize_google(audio)
+    print('Google thinks you are suffering from:'+text)
+    f_text= "https://www.google.com/search?q=identify the disease having such symptoms and suggest the medicines accordingly:" + text + "?"
+    wb.get(chrome).open(f_text)
+except Exception as e:
+    print(e)
+    
